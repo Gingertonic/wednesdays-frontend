@@ -2,7 +2,7 @@ import React from 'react'
 
 const Chord = ({ chordName }) => {
     return(
-        <strong>{chordName}</strong>
+        <div><strong className="chord-name">{chordName}</strong></div>
     )
 }
 

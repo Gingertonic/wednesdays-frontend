@@ -1,24 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Line from '../components/Line'
+import { chords } from '../testItems/newWorld'
 
-class Section extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            content: props.content
-        }
-    }
+const Section = ({ content }) => {
 
-    renderContent = () => this.state.content.map(line => <Line line={line} />)
+    const renderContent = () => content.map((line, i) => <Line key={i} line={line} />)
 
-    render(){
-        return (
-            <div>
-                { this.renderContent() }
-            </div>
-        )
-    }
-    
+    return (
+        <div className="section">
+            { renderContent() }
+        </div>
+    )        
+
 }
 
 export default Section

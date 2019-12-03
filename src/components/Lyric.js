@@ -2,7 +2,7 @@ import React from 'react'
 
 const Lyric = ({ lyricChunk }) => {
     return(
-        <text>{lyricChunk} </text>
+        <p className="lyric-chunk">{lyricChunk} </p>
     )
 }
 

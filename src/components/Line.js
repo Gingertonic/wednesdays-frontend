@@ -3,7 +3,7 @@ import Chord from './Chord'
 import Lyric from './Lyric'
 
 const Line = ({ line }) => {
-    const renderLine = line.map(syll => syll.type === "lyric" ? <Lyric lyricChunk={syll.body}/>: <Chord chordName={syll.body}/>)
+    const renderLine = line.map((syll, i) => syll.type === "lyric" ? <Lyric key={i} lyricChunk={syll.body}/>: <Chord key={i} chordName={syll.body}/>)
 
     return (
         <li>
