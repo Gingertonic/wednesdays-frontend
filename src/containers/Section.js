@@ -1,13 +1,19 @@
 import React from 'react'
 import Line from '../components/Line'
-import { chords } from '../testItems/newWorld'
+import ChordImg from '../components/ChordImg'
 
 const Section = ({ content }) => {
 
     const renderContent = content.map((line, i) => <Line key={i} line={line} />)
-    const renderLineChords = () => content.map(line => renderChords(line))
-    const renderChords = line => line.map(syll => syll.type === "chord" ? console.log(syll.body) : null)
+    const renderLineChords = () => content.map(line => findChords(line))
+    const findChords = line => line.map(syll => syll.type === "chord" ? syll.body : null)
 
+    const renderChords = () => uniqChords.map((ch, i) => <ChordImg key={i} chordSymbol={ch} />)
+    // const renderChords = () => uniqChords.map((ch, i) => console.log(ch) )
+
+    // line => line.map(syll => syll.type === "chord" ? <ChordImg chordSymbol={syll.body} /> : null)
+
+    const uniqChords = [...new Set(renderLineChords().flat())].filter(ch => ch)
 
     return (
         <div className="section">
@@ -15,7 +21,7 @@ const Section = ({ content }) => {
                 { renderContent }
             </div>
             <div id="section-chords">
-                { renderLineChords() }
+                { renderChords() }
             </div>      
         </div>
     )        

@@ -10,7 +10,7 @@ class Wednesdays extends Component {
         this.state = {
             currentSong: song,
             currentSectionId: 0,
-            currentSection: []
+            currentSectionContent: []
         }
     }
 
@@ -20,7 +20,9 @@ class Wednesdays extends Component {
         this.setState({
             currentSong: currentSong,
             currentSectionId: 0,
-            currentSection: currentSong.sections[firstSectionName]
+            currentSectionContent: currentSong.sections[firstSectionName],
+            currentSectionName: firstSectionName
+            // broke after renaming state
         })
     }
 
@@ -40,16 +42,16 @@ class Wednesdays extends Component {
 
     jumpToSection = nextSectionId => {
         const newSectionName = this.state.currentSong.structure[nextSectionId]
+        const newSectionContent = this.state.currentSong.sections[newSectionName]
         this.setState({  
             currentSectionId: nextSectionId,
-            currentSection: this.state.currentSong.sections[newSectionName]
+            currentSectionName: newSectionName,
+            currentSectionContent: newSectionContent
         })
-        console.log("After update: " + this.state)
     }
 
     showEnd = () => {
-        this.setState( {currentSection: [[{type: "chord", body: "NEXT SONG!"}]]} )
-        console.log("After end update: " + this.state)
+        this.setState( {currentSection: [[{type: "lyric", body: "NEXT SONG!"}]]} )
     }
 
     render(){
@@ -84,7 +86,8 @@ class Wednesdays extends Component {
                 <div>
                     <h1>{this.state.currentSong.data.title}</h1>
                     <h3>{this.state.currentSong.data.writers}</h3> 
-                    <Chart currentSection={this.state.currentSection}/>
+                   
+                    <Chart currentSection={this.state.currentSectionContent}/>
                 </div>
             
             </React.Fragment>

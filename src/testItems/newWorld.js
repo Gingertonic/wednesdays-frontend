@@ -47,7 +47,7 @@ const aWholeNewWorld = {
                 {type: "chord", body: "G"}, {type: "lyric", body: "whole new"},
                 {type: "chord", body: "A"}, {type: "lyric", body: "world"}
             ],
-            [   {type: "lyric", body: "A,"},
+            [   {type: "lyric", body: "A"},
                 {type: "chord", body: "G"}, {type: "lyric", body: "new, fan-"},
                 {type: "chord", body: "A"}, {type: "lyric", body: "tastic point of"},
                 {type: "chord", body: "D"}, {type: "lyric", body: "view"}
@@ -176,11 +176,13 @@ const badMoonRising = {
 
 const chords = { 
     "A": {imgUrl: "http://www.uke-chords.com/images/chords/amaj.jpg"},
+    "A7": {imgUrl: "https://ukulele-chords.com/img/chord/A7_11.png"},
     "Am": {imgUrl: "http://www.uke-chords.com/images/chords/amin.jpg"},
     "Bb": {imgUrl: "http://www.uke-chords.com/images/chords/bbmaj.jpg"}, 
     "Bbm": {imgUrl: "http://www.uke-chords.com/images/chords/amaj.jpg"}, 
     "B7": {imgUrl: "http://www.uke-chords.com/images/chords/bmaj7.jpg"}, 
-    "Bm": {imgUrl: "http://www.uke-chords.com/images/chords/bmin.jpg"}, 
+    "Bm": {imgUrl: "http://www.uke-chords.com/images/chords/bmin.jpg"},
+    "Bm7": {imgUrl: "https://ukulele-chords.com/img/chord/Bm7_97.png"},
     "C": {imgUrl: "http://www.uke-chords.com/images/chords/cmaj.jpg"}, 
     "Cm": {imgUrl: "http://www.uke-chords.com/images/chords/cmin.jpg"}, 
     "C#": {imgUrl: "http://www.uke-chords.com/images/chords/csmaj.jpg"}, 
@@ -189,7 +191,8 @@ const chords = {
     "Dm": {imgUrl: "http://www.uke-chords.com/images/chords/dmin.jpg"}, 
     "Eb": {imgUrl: "http://www.uke-chords.com/images/chords/ebmaj.jpg"}, 
     "Ebm": {imgUrl: "http://www.uke-chords.com/images/chords/ebmin.jpg"}, 
-    "E": {imgUrl: "http://www.uke-chords.com/images/chords/emaj.jpg"}, 
+    "E": {imgUrl: "http://www.uke-chords.com/images/chords/emaj.jpg"},
+    "E7": {imgUrl: "https://ukulele-chords.com/img/chord/E7_361.png"},
     "Em": {imgUrl: "http://www.uke-chords.com/images/chords/emin.jpg"}, 
     "F": {imgUrl: "http://www.uke-chords.com/images/chords/fmaj.jpg"}, 
     "Fm": {imgUrl: "http://www.uke-chords.com/images/chords/fmin.jpg"}, 
