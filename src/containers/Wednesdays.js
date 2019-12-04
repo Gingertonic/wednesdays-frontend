@@ -26,7 +26,6 @@ class Wednesdays extends Component {
     }
 
     loadSong = song => {
-        // const currentSong = allSongs[parseInt(songId)]
         const currentSong = song
         const firstSectionName = currentSong.structure[0]
         this.setState({
@@ -39,7 +38,8 @@ class Wednesdays extends Component {
     }
 
     loadRandomSong = () => {
-        const random = Math.floor(Math.random() * Math.floor(allSongs.length));
+        const totalSongs = 2
+        const random = Math.floor(Math.random() * Math.floor(2) + 1);
         this.fetchSong(random)
     }
 
@@ -72,6 +72,18 @@ class Wednesdays extends Component {
         const newStatus = !this.state.currentSong.favourite
         const updatedSong = { ...this.state.currentSong, favourite: newStatus }
         this.setState({ currentSong: updatedSong })
+        this.updateSongInApi(newStatus)
+    }
+
+    updateSongInApi = newStatus => {
+        fetch(`http://localhost:3001/songs/${this.state.currentSong.data.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({favourite: newStatus}),
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": 'application/json'
+            }
+        })
     }
 
     jumpToSection = nextSectionId => {
