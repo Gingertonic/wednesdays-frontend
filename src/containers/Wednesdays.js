@@ -1,29 +1,50 @@
 import React, { Component } from 'react'
 import Chart from './Chart'
 
-import { song, songTwo, allSongs } from '../testItems/newWorld'
+import { song, songTwo, songThree, allSongs } from '../testItems/newWorld'
 
 class Wednesdays extends Component {
 
     constructor(){
         super()
         this.state = {
-            currentSong: song,
+            currentSong: allSongs[0],
             currentSectionId: 0,
-            currentSectionContent: []
+            currentSectionContent: [],
+            formInput: ""
         }
     }
 
     componentDidMount(){
-        const currentSong = songTwo
+        this.loadSong(0) 
+    }
+
+    loadSong = songId => {
+        const currentSong = allSongs[parseInt(songId)]
         const firstSectionName = currentSong.structure[0]
         this.setState({
             currentSong: currentSong,
             currentSectionId: 0,
             currentSectionContent: currentSong.sections[firstSectionName],
-            currentSectionName: firstSectionName
-            // broke after renaming state
+            currentSectionName: firstSectionName,
+            formInput: ""
         })
+    }
+
+    loadRandomSong = () => {
+        const random = Math.floor(Math.random() * Math.floor(allSongs.length));
+        this.loadSong(random)
+    }
+
+    handleFormSubmit = e => {
+         e.preventDefault();
+         console.log(this.state.formInput)
+         this.loadSong(this.state.formInput)
+    }
+
+    handleFormInput = e => {
+        e.preventDefault();
+        this.setState({ formInput: e.target.value })
     }
 
     previousSection = () => {
@@ -77,6 +98,16 @@ class Wednesdays extends Component {
                         <div>
                             <button onClick={this.previousSection}>Previous Section</button>
                         </div>
+                        <div>
+                            <button onClick={this.loadRandomSong}>Random!</button>
+                        </div>
+
+                        
+                        <form onSubmit={e => this.handleFormSubmit(e)}>
+                            <input onChange={e => this.handleFormInput(e)} type="text" value={this.state.formInput} placeholder="Song ID"/>
+                        </form>
+                        
+                        
                         
 
                     </header>
