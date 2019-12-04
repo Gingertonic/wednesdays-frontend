@@ -43,8 +43,19 @@ li {
 
 #chart {
   margin-left: 1em;
+  padding-top: 1em;
 }
 
 .chord-img {
   height: 10em;
+}
+
+#song-writers {
+  margin-top: -1em;
+}
+
+button {
+  height: 2em;
+  border-radius: 45%;
+  font-family: monospace;
 }

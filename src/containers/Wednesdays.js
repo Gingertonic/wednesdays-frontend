@@ -99,7 +99,7 @@ class Wednesdays extends Component {
                             <button onClick={this.previousSection}>Previous Section</button>
                         </div>
                         <div>
-                            <button onClick={this.loadRandomSong}>Random!</button>
+                            <button onClick={this.loadRandomSong}>Random Song!</button>
                         </div>
 
                         
@@ -115,8 +115,11 @@ class Wednesdays extends Component {
                     
                 </div>
                 <div>
-                    <h1>{this.state.currentSong.data.title}</h1>
-                    <h3>{this.state.currentSong.data.writers}</h3> 
+                    <div id="song-data">
+                        <h1 id="song-title">{this.state.currentSong.data.title}</h1>
+                        <h3 id="song-writers">{this.state.currentSong.data.writers}</h3>
+                    </div>
+                     
                    
                     <Chart currentSection={this.state.currentSectionContent}/>
                 </div>
