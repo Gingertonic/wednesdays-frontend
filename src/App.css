@@ -68,3 +68,11 @@ input {
   text-align: center;
   font-size: 0.5em;
 }
+
+#chord-layouts {
+  display: inline-flex;
+}
+
+.chord-layout-name {
+  margin-left: 0.5em;
+}
