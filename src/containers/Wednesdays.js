@@ -46,7 +46,7 @@ class Wednesdays extends Component {
     handleFormSubmit = e => {
          e.preventDefault();
          console.log(this.state.formInput)
-         this.loadSong(this.state.formInput)
+         this.fetchSong(this.state.formInput)
     }
 
     handleFormInput = e => {
