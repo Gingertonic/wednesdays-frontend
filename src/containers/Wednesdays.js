@@ -68,6 +68,12 @@ class Wednesdays extends Component {
         this.jumpToSection(0)
     }
 
+    toggleFavourite = () => {
+        const newStatus = !this.state.currentSong.favourite
+        const updatedSong = { ...this.state.currentSong, favourite: newStatus }
+        this.setState({ currentSong: updatedSong })
+    }
+
     jumpToSection = nextSectionId => {
         const newSectionName = this.state.currentSong.structure[nextSectionId]
         const newSectionContent = this.state.currentSong.sections[newSectionName]
@@ -107,6 +113,10 @@ class Wednesdays extends Component {
                         </div>
                         <div>
                             <button onClick={this.loadRandomSong}>Random Song!</button>
+                        </div>
+
+                        <div id="song-fave" onClick={this.toggleFavourite}>
+                            {this.state.currentSong.favourite ? "UnLike" : "Like Me!" }
                         </div>
 
                         
