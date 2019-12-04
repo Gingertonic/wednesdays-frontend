@@ -1,159 +1,122 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Welcome from '../components/Welcome'
+import SongbookIndex from '../components/SongbookIndex'
 import Chart from './Chart'
 
-import { allSongs } from '../testItems/newWorld'
+
 
 class Wednesdays extends Component {
 
-    constructor(){
-        super()
-        this.state = {
-            currentSong: allSongs[0],
-            currentSectionId: 0,
-            currentSectionContent: [],
-            formInput: ""
-        }
-    }
+    // constructor(){
+    //     super()
+    //     this.state = {
+    //         currentSong: allSongs[0],
+    //         currentSectionId: 0,
+    //         currentSectionContent: [],
+    //         formInput: ""
+    //     }
+    // }
 
-    componentDidMount(){
-        this.fetchSong(1) 
-    }
+    // componentDidMount(){
+    //     this.fetchSong(1)
+    // }
 
-    fetchSong = songId => {
-        fetch(`http://localhost:3001/songs/${songId}`)
-            .then(resp => resp.json())
-            .then(this.loadSong)
-    }
+    // handleKeyNav = e => {
+    //     const key = e.keyCode
+    //     console.log(key)
+    // }
 
-    loadSong = song => {
-        const currentSong = song
-        const firstSectionName = currentSong.structure[0]
-        this.setState({
-            currentSong: currentSong,
-            currentSectionId: 0,
-            currentSectionContent: currentSong.sections[firstSectionName],
-            currentSectionName: firstSectionName,
-            formInput: ""
-        })
-    }
+    // fetchSong = songId => {
+    //     fetch(`http://localhost:3001/songs/${songId}`)
+    //         .then(resp => resp.json())
+    //         .then(this.loadSong)
+    // }
 
-    loadRandomSong = () => {
-        const totalSongs = 2
-        const random = Math.floor(Math.random() * Math.floor(2) + 1);
-        this.fetchSong(random)
-    }
+    // loadSong = song => {
+    //     const currentSong = song
+    //     const firstSectionName = currentSong.structure[0]
+    //     this.setState({
+    //         currentSong: currentSong,
+    //         currentSectionId: 0,
+    //         currentSectionContent: currentSong.sections[firstSectionName],
+    //         currentSectionName: firstSectionName,
+    //         formInput: ""
+    //     })
+    // }
 
-    handleFormSubmit = e => {
-         e.preventDefault();
-         console.log(this.state.formInput)
-         this.fetchSong(this.state.formInput)
-    }
+    // loadRandomSong = () => {
+    //     const totalSongs = 2
+    //     const random = Math.floor(Math.random() * Math.floor(2) + 1);
+    //     this.fetchSong(random)
+    // }
 
-    handleFormInput = e => {
-        e.preventDefault();
-        this.setState({ formInput: e.target.value })
-    }
+    // handleFormSubmit = e => {
+    //      e.preventDefault();
+    //      console.log(this.state.formInput)
+    //      this.fetchSong(this.state.formInput)
+    // }
 
-    previousSection = () => {
-        const prevSectionId = this.state.currentSectionId - 1
-        prevSectionId < 0 ? this.backToTop() : this.jumpToSection(prevSectionId)  
-    }
+    // handleFormInput = e => {
+    //     e.preventDefault();
+    //     this.setState({ formInput: e.target.value })
+    // }
 
-    nextSection = () => {
-        const nextSectionId = this.state.currentSectionId + 1
-        nextSectionId === this.state.currentSong.structure.length ? this.showEnd() : this.jumpToSection(nextSectionId)   
-    }
+    // previousSection = () => {
+    //     const prevSectionId = this.state.currentSectionId - 1
+    //     prevSectionId < 0 ? this.backToTop() : this.jumpToSection(prevSectionId)  
+    // }
 
-    backToTop = () => {
-        this.jumpToSection(0)
-    }
+    // nextSection = () => {
+    //     const nextSectionId = this.state.currentSectionId + 1
+    //     nextSectionId === this.state.currentSong.structure.length ? this.showEnd() : this.jumpToSection(nextSectionId)   
+    // }
 
-    toggleFavourite = () => {
-        const newStatus = !this.state.currentSong.favourite
-        const updatedSong = { ...this.state.currentSong, favourite: newStatus }
-        this.setState({ currentSong: updatedSong })
-        this.updateSongInApi(newStatus)
-    }
+    // backToTop = () => {
+    //     this.jumpToSection(0)
+    // }
 
-    updateSongInApi = newStatus => {
-        fetch(`http://localhost:3001/songs/${this.state.currentSong.data.id}`, {
-            method: 'PATCH',
-            body: JSON.stringify({favourite: newStatus}),
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": 'application/json'
-            }
-        })
-    }
+    // toggleFavourite = () => {
+    //     const newStatus = !this.state.currentSong.favourite
+    //     const updatedSong = { ...this.state.currentSong, favourite: newStatus }
+    //     this.setState({ currentSong: updatedSong })
+    //     this.updateSongInApi(newStatus)
+    // }
 
-    jumpToSection = nextSectionId => {
-        const newSectionName = this.state.currentSong.structure[nextSectionId]
-        const newSectionContent = this.state.currentSong.sections[newSectionName]
-        this.setState({  
-            currentSectionId: nextSectionId,
-            currentSectionName: newSectionName,
-            currentSectionContent: newSectionContent
-        })
-    }
+    // updateSongInApi = newStatus => {
+    //     fetch(`http://localhost:3001/songs/${this.state.currentSong.data.id}`, {
+    //         method: 'PATCH',
+    //         body: JSON.stringify({favourite: newStatus}),
+    //         headers: {
+    //             "Content-Type": 'application/json',
+    //             "Accept": 'application/json'
+    //         }
+    //     })
+    // }
 
-    showEnd = () => {
-        this.setState( {currentSection: [[{type: "lyric", body: "NEXT SONG!"}]]} )
-    }
+    // jumpToSection = nextSectionId => {
+    //     const newSectionName = this.state.currentSong.structure[nextSectionId]
+    //     const newSectionContent = this.state.currentSong.sections[newSectionName]
+    //     this.setState({  
+    //         currentSectionId: nextSectionId,
+    //         currentSectionName: newSectionName,
+    //         currentSectionContent: newSectionContent
+    //     })
+    // }
+
+    // showEnd = () => {
+    //     this.setState( {currentSectionContent: [[{type: "lyric", body: "NEXT SONG!"}]]} )
+    // }
 
     render(){
         return(
-            <React.Fragment>
+            <Router>
                 <div>
-                    <header className="App-header">
-                        <a
-                        className="App-link"
-                        href="https://ukulelewednesdays.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >
-                        <img src="https://pbs.twimg.com/profile_images/1033135509206380544/xABx42As_400x400.jpg" className="App-logo" alt="logo" />
-                        </a>
-
-                        <div>
-                            <button onClick={this.nextSection}>Next Section</button>
-                        </div> 
-                        <div>
-                            <button onClick={this.backToTop}>Back to the Top</button>
-                        </div>
-                        <div>
-                            <button onClick={this.previousSection}>Previous Section</button>
-                        </div>
-                        <div>
-                            <button onClick={this.loadRandomSong}>Random Song!</button>
-                        </div>
-
-                        <div id="song-fave" onClick={this.toggleFavourite}>
-                            {this.state.currentSong.favourite ? "UnLike" : "Like Me!" }
-                        </div>
-
-                        
-                        <form onSubmit={e => this.handleFormSubmit(e)}>
-                            <input onChange={e => this.handleFormInput(e)} type="text" value={this.state.formInput} placeholder="Song ID"/>
-                        </form>
-                        
-                        
-                        
-
-                    </header>
-    
-                    
+                    <Route exact path="/" component={Welcome} />
+                    <Route exact path="/songbook" component={SongbookIndex} />
+                    <Route exact path="/song" component={Chart} />
                 </div>
-                <div>
-                    <div id="song-data">
-                        <h1 id="song-title">{this.state.currentSong.data.title}</h1>
-                        <h3 id="song-writers">{this.state.currentSong.data.writers}</h3>
-                    </div>
-                     
-                   
-                    <Chart currentSection={this.state.currentSectionContent}/>
-                </div>
-            
-            </React.Fragment>
+            </Router>
         )
     }
 }
