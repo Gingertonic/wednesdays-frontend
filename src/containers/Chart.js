@@ -141,9 +141,9 @@ class Chart extends Component {
                     </div>
                      
                    
-                    <div id="chart">
-                        <Section content={this.state.currentSectionContent} />
-                    </div>
+                    
+                    <Section content={this.state.currentSectionContent} />
+                   
                 </div>
             
             </React.Fragment>

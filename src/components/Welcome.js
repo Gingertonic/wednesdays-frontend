@@ -8,8 +8,9 @@ const Welcome = () => {
         <React.Fragment>
             <SideBar buttons={buttons} inputs={inputs} />
             <div id="main">
-                Welcome to Ukulele Wednesdays!
-                Tweet your requests to @ukulelewednesdays    
+                <h1>Welcome to Ukulele Wednesdays!</h1>
+                
+                <h2>Tweet your requests to <strong>@ukulelewednesdays</strong></h2>  
             </div>
         
         </React.Fragment>

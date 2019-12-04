@@ -14,7 +14,7 @@ const SongbookIndex = () => {
         <React.Fragment>
             <SideBar buttons={buttons} inputs={inputs} />
             <div id="main">
-                All the Songs!   
+                <h1>All the Songs!</h1> 
             </div>
         
         </React.Fragment>

@@ -16,7 +16,7 @@ const Section = ({ content }) => {
     const uniqChords = [...new Set(renderLineChords().flat())].filter(ch => ch)
 
     return (
-        <div className="section">
+        <div id="chart">
             <div id="section-content">
                 { renderContent }
             </div>
