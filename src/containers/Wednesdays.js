@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Chart from './Chart'
 
-import { song, songTwo, songThree, allSongs } from '../testItems/newWorld'
+import { allSongs } from '../testItems/newWorld'
 
 class Wednesdays extends Component {
 
@@ -16,11 +16,18 @@ class Wednesdays extends Component {
     }
 
     componentDidMount(){
-        this.loadSong(0) 
+        this.fetchSong(1) 
     }
 
-    loadSong = songId => {
-        const currentSong = allSongs[parseInt(songId)]
+    fetchSong = songId => {
+        fetch(`http://localhost:3001/songs/${songId}`)
+            .then(resp => resp.json())
+            .then(this.loadSong)
+    }
+
+    loadSong = song => {
+        // const currentSong = allSongs[parseInt(songId)]
+        const currentSong = song
         const firstSectionName = currentSong.structure[0]
         this.setState({
             currentSong: currentSong,
@@ -33,7 +40,7 @@ class Wednesdays extends Component {
 
     loadRandomSong = () => {
         const random = Math.floor(Math.random() * Math.floor(allSongs.length));
-        this.loadSong(random)
+        this.fetchSong(random)
     }
 
     handleFormSubmit = e => {
