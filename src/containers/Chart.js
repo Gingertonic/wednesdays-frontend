@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import SideBar from '../components/SideBar'
 import Section from './Section'
 
+import { connect } from 'react-redux'
+
 import { allSongs } from '../testItems/newWorld'
 
 
@@ -18,7 +20,7 @@ class Chart extends Component {
     }
 
     componentDidMount(){
-        this.fetchSong(1)
+        // this.fetchSong(1)
     }
 
     handleKeyNav = e => {
@@ -46,7 +48,7 @@ class Chart extends Component {
 
     loadRandomSong = () => {
         const totalSongs = 2
-        const random = Math.floor(Math.random() * Math.floor(2) + 1);
+        const random = Math.floor(Math.random() * Math.floor(totalSongs) + 1);
         this.fetchSong(random)
     }
 
@@ -108,7 +110,7 @@ class Chart extends Component {
     }
 
     buttons = () => [
-            { text: "Next Section", eventHandler: this.nextSection },
+            { text: "Next Section", eventHandler: this.props.nextSection },
             { text: "Back to Top", eventHandler: this.backToTop },
             { text: "Previous Section", eventHandler: this.previousSection },
             { text: "Random Song!", eventHandler: this.loadSong },
@@ -136,13 +138,13 @@ class Chart extends Component {
                 <SideBar buttons={this.buttons()} inputs={this.inputs()} />
                 <div id="main">
                     <div id="song-data">
-                        <h1 id="song-title">{this.state.currentSong.data.title}   <span id="song-fave" onClick={this.toggleFavourite}>{this.state.currentSong.favourite ? "❤️" : "♡" }</span></h1> 
-                        <h3 id="song-writers">{this.state.currentSong.data.writers}</h3>
+                        <h1 id="song-title">{this.props.currentSong.data.title}   <span id="song-fave" onClick={this.toggleFavourite}>{this.state.currentSong.favourite ? "❤️" : "♡" }</span></h1> 
+                        <h3 id="song-writers">{this.props.currentSong.data.writers}</h3>
                     </div>
                      
                    
                     
-                    <Section content={this.state.currentSectionContent} />
+                    <Section content={this.props.currentSectionContent} />
                    
                 </div>
             
@@ -152,4 +154,24 @@ class Chart extends Component {
 
 }
 
-export default Chart
+const mapStateToProps = state => {
+    return {
+        allSongs: state.allSongs,
+        currentSong: state.currentSong,
+        currentSectionId: state.currentSectionId,
+        currentSectionContent: state.currentSectionContent,
+        formInput: ""
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        nextSection: () => dispatch({type: 'NEXT_SECTION'}),
+        backToTop: () => dispatch({type: 'BACK_TO_TOP'}),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Chart)

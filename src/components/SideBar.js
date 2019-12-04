@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const SideBar = ({buttons, inputs}) => {
-    const renderButtons = buttons.map(rules => <div><button onClick={rules.eventHandler}>{rules.text}</button></div> )
-    const renderInputs = inputs.map(rules => <form onSubmit={e => rules.eventHandler(e)}><input onChange={e => rules.changeHandler(e)} type="text" value={rules.formInput} placeholder={rules.placeholder}/></form> )
+    const renderButtons = buttons.map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
+    const renderInputs = inputs.map((rules, i) => <form key={i}onSubmit={e => rules.eventHandler(e)}><input onChange={e => rules.changeHandler(e)} type="text" value={rules.formInput} placeholder={rules.placeholder}/></form> )
     const linkStyle = {
         width: '100px',
         // padding: '12px',
