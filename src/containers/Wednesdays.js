@@ -3,23 +3,20 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Welcome from '../components/Welcome'
 import SongbookIndex from '../components/SongbookIndex'
 import Chart from './Chart'
-
+import { allSongs } from '../testItems/newWorld'
 
 
 class Wednesdays extends Component {
 
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         currentSong: allSongs[0],
-    //         currentSectionId: 0,
-    //         currentSectionContent: [],
-    //         formInput: ""
-    //     }
-    // }
+    constructor(){
+        super()
+        this.state = {
+            allSongs: allSongs
+        }
+    }
 
     // componentDidMount(){
-    //     this.fetchSong(1)
+    //     this.fetchSongs
     // }
 
     // handleKeyNav = e => {
@@ -27,11 +24,12 @@ class Wednesdays extends Component {
     //     console.log(key)
     // }
 
-    // fetchSong = songId => {
-    //     fetch(`http://localhost:3001/songs/${songId}`)
-    //         .then(resp => resp.json())
-    //         .then(this.loadSong)
-    // }
+    fetchSongs = songId => {
+        // fetch(`http://localhost:3001/songs/`)
+        //     .then(resp => resp.json())
+        //     .then(this.setState({ allSongs }))
+
+    }
 
     // loadSong = song => {
     //     const currentSong = song
@@ -111,11 +109,11 @@ class Wednesdays extends Component {
     render(){
         return(
             <Router>
-                <div>
+                <React.Fragment>
                     <Route exact path="/" component={Welcome} />
                     <Route exact path="/songbook" component={SongbookIndex} />
                     <Route exact path="/song" component={Chart} />
-                </div>
+                </React.Fragment>
             </Router>
         )
     }

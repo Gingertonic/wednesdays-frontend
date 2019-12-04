@@ -107,23 +107,34 @@ class Chart extends Component {
         this.setState( {currentSectionContent: [[{type: "lyric", body: "NEXT SONG!"}]]} )
     }
 
-
-    render(){
-        const buttons  = [
+    buttons = () => [
             { text: "Next Section", eventHandler: this.nextSection },
             { text: "Back to Top", eventHandler: this.backToTop },
             { text: "Previous Section", eventHandler: this.previousSection },
             { text: "Random Song!", eventHandler: this.loadSong },
         ]
 
-        const inputs = [
-            { placeholder: "Next Section", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
+    inputs = () => [
+            { placeholder: "Song ID", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
         ]
-        
+
+
+    render(){
+        // const buttons  = [
+        //     { text: "Next Section", eventHandler: this.nextSection },
+        //     { text: "Back to Top", eventHandler: this.backToTop },
+        //     { text: "Previous Section", eventHandler: this.previousSection },
+        //     { text: "Random Song!", eventHandler: this.loadSong },
+        // ]
+
+        // const inputs = [
+        //     { placeholder: "Next Section", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
+        // ]
+
         return (
             <React.Fragment>
-                <SideBar buttons={buttons} inputs={inputs} />
-                <div>
+                <SideBar buttons={this.buttons()} inputs={this.inputs()} />
+                <div id="main">
                     <div id="song-data">
                         <h1 id="song-title">{this.state.currentSong.data.title}   <span id="song-fave" onClick={this.toggleFavourite}>{this.state.currentSong.favourite ? "❤️" : "♡" }</span></h1> 
                         <h3 id="song-writers">{this.state.currentSong.data.writers}</h3>

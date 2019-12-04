@@ -1,10 +1,23 @@
 import React from 'react'
+import SideBar from './SideBar'
 
 const SongbookIndex = () => {
+    const buttons  = [
+        // { text: "Random Song!", eventHandler: this.loadSong },
+    ]
+
+    const inputs = [
+        // { placeholder: "Next Section", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
+    ]
+
     return (
-        <h1>
-            All the Songs!
-        </h1>
+        <React.Fragment>
+            <SideBar buttons={buttons} inputs={inputs} />
+            <div id="main">
+                All the Songs!   
+            </div>
+        
+        </React.Fragment>
     )
 }
 
