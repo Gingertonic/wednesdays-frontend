@@ -14,8 +14,8 @@ class Wednesdays extends Component {
                 <React.Fragment>
                     <Route exact path="/" component={Welcome} />
                     <Route exact path="/songbook" component={SongbookIndex} />
-                    <Route exact path="/song" component={Chart} />
-                    <Route exact path="/song/:songId" component={Chart} />
+                    {/* <Route exact path="/song" component={Chart} /> */}
+                    <Route exact path="/songs/:songId" component={Chart} />
                     {/* <Route path='/song' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} /> */}
                 </React.Fragment>
             </Router>

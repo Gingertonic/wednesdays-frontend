@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getSongChart } from '../actions/songActions'
 
@@ -20,8 +20,10 @@ class SideBar extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
-        this.props.getSongChart(this.state.formInput)
-        this.setState({ formInput: ""})
+        this.props.getSongChart(this.state.formInput);
+        this.setState({ formInput: ""});
+        console.log("setting song")
+        this.props.history.push(`/songs/${this.state.formInput}`)
     }
 
     render() {
@@ -58,4 +60,4 @@ class SideBar extends Component {
 }
 
 
-export default connect(null, { getSongChart })(SideBar)
+export default withRouter(connect(null, { getSongChart })(SideBar))

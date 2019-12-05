@@ -11,7 +11,7 @@ class SongbookIndex extends Component {
     }
 
     render(){
-        const renderSongs = this.props.allSongs.map(s => <li key={s.id}><NavLink to={`/song/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
+        const renderSongs = this.props.allSongs.map(s => <li key={s.id}><NavLink to={`/songs/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
         const buttons = []
 
         return (

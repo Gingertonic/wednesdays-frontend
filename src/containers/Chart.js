@@ -24,6 +24,7 @@ class Chart extends Component {
         const path = window.location.pathname.split("/")
         const songId = parseInt(path[path.length-1])
         this.props.getSongChart(songId)
+        // <Redirect to={`/songs/${songId}`}/>
     }
 
     fetchSong = songId => {
