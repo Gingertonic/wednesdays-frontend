@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getAllSongs } from '../actions/songActions'
 import Welcome from '../components/Welcome'
 import SongbookIndex from '../components/SongbookIndex'
 import Chart from './Chart'
@@ -7,6 +9,10 @@ import Chart from './Chart'
 
 
 class Wednesdays extends Component {
+
+    componentDidMount = () => {
+        this.props.getAllSongs()
+    }
     
     render(){
         return(
@@ -23,4 +29,4 @@ class Wednesdays extends Component {
     }
 }
 
-export default Wednesdays
+export default connect(null, { getAllSongs })(Wednesdays)
