@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 
-const store = createStore(songReducer)
+const store = createStore(songReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
     <Provider store={store}>

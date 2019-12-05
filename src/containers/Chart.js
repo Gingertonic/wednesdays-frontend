@@ -3,6 +3,7 @@ import SideBar from '../components/SideBar'
 import Section from './Section'
 
 import { connect } from 'react-redux'
+import { goToSection } from '../actions/songActions'
 
 import { allSongs } from '../testItems/newWorld'
 
@@ -21,11 +22,6 @@ class Chart extends Component {
 
     componentDidMount(){
         // this.fetchSong(1)
-    }
-
-    handleKeyNav = e => {
-        const key = e.keyCode
-        console.log(key)
     }
 
     fetchSong = songId => {
@@ -63,20 +59,6 @@ class Chart extends Component {
         this.setState({ formInput: e.target.value })
     }
 
-    previousSection = () => {
-        const prevSectionId = this.state.currentSectionId - 1
-        prevSectionId < 0 ? this.backToTop() : this.jumpToSection(prevSectionId)  
-    }
-
-    nextSection = () => {
-        const nextSectionId = this.state.currentSectionId + 1
-        nextSectionId === this.state.currentSong.structure.length ? this.showEnd() : this.jumpToSection(nextSectionId)   
-    }
-
-    backToTop = () => {
-        this.jumpToSection(0)
-    }
-
     toggleFavourite = () => {
         const newStatus = !this.state.currentSong.favourite
         const updatedSong = { ...this.state.currentSong, favourite: newStatus }
@@ -95,24 +77,14 @@ class Chart extends Component {
         })
     }
 
-    jumpToSection = nextSectionId => {
-        const newSectionName = this.state.currentSong.structure[nextSectionId]
-        const newSectionContent = this.state.currentSong.sections[newSectionName]
-        this.setState({  
-            currentSectionId: nextSectionId,
-            currentSectionName: newSectionName,
-            currentSectionContent: newSectionContent
-        })
-    }
-
     showEnd = () => {
         this.setState( {currentSectionContent: [[{type: "lyric", body: "NEXT SONG!"}]]} )
     }
 
     buttons = () => [
-            { text: "Next Section", eventHandler: this.props.nextSection },
-            { text: "Back to Top", eventHandler: this.backToTop },
-            { text: "Previous Section", eventHandler: this.previousSection },
+            { text: "Next Section", eventHandler: () => this.props.goToSection("next") },
+            { text: "Back to Top", eventHandler: () => this.props.goToSection("top") },
+            { text: "Previous Section", eventHandler: () => this.props.goToSection("prev") },
             { text: "Random Song!", eventHandler: this.loadSong },
         ]
 
@@ -122,19 +94,10 @@ class Chart extends Component {
 
 
     render(){
-        // const buttons  = [
-        //     { text: "Next Section", eventHandler: this.nextSection },
-        //     { text: "Back to Top", eventHandler: this.backToTop },
-        //     { text: "Previous Section", eventHandler: this.previousSection },
-        //     { text: "Random Song!", eventHandler: this.loadSong },
-        // ]
-
-        // const inputs = [
-        //     { placeholder: "Next Section", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
-        // ]
 
         return (
             <React.Fragment>
+
                 <SideBar buttons={this.buttons()} inputs={this.inputs()} />
                 <div id="main">
                     <div id="song-data">
@@ -164,14 +127,17 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        nextSection: () => dispatch({type: 'NEXT_SECTION'}),
-        backToTop: () => dispatch({type: 'BACK_TO_TOP'}),
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         nextSection: () => dispatch({type: 'NEXT_SECTION'}),
+//         backToTop: () => dispatch({type: 'BACK_TO_TOP'}),
+//     }
+// }
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    // mapDispatchToProps
+    {
+        goToSection
+    }
 )(Chart)
