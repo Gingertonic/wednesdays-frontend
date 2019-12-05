@@ -11,15 +11,16 @@ class SongbookIndex extends Component {
     }
 
     render(){
-        const renderSongs = this.props.allSongs.map(s => <li key={s.id}><NavLink to={`/songs/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
+        const renderSongs = this.props.allSongs.map(s => <li className="index-li" key={s.id}><NavLink to={`/songs/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
         const buttons = []
 
         return (
             <React.Fragment>
                 <SideBar buttons={buttons} />
                 <div id="main">
-                    <h1>All the Songs!</h1> 
-                    { renderSongs }
+                    <div> <h1>All the Songs!</h1> </div>
+                    <div>{ renderSongs }</div>
+                    {/* <div>&copy; Gingertonic</div> */}
                 </div>
             
             </React.Fragment>

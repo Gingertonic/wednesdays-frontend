@@ -27,14 +27,15 @@ class Chart extends Component {
     }
 
     buttons = () => [
-            { text: "Next Section", eventHandler: () => this.props.goToSection("next") },
-            { text: "Back to Top", eventHandler: () => this.props.goToSection("top") },
-            { text: "Previous Section", eventHandler: () => this.props.goToSection("prev") },
+            { text: "Top", eventHandler: () => this.props.goToSection("top") },
+            { text: "Previous", eventHandler: () => this.props.goToSection("prev") },
+            { text: "Next", eventHandler: () => this.props.goToSection("next") }
             // { text: "Random Song!", eventHandler: this.loadRandomSong },
         ]
 
 
     render(){
+        const renderButtons = this.buttons().map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
 
         return (
             <React.Fragment>
@@ -48,6 +49,10 @@ class Chart extends Component {
                     </div>
                       
                     <Section content={this.props.currentSectionContent} />
+
+                    <div id="song-nav">
+                        { renderButtons }
+                    </div>
                    
                 </div>
             

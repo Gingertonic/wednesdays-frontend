@@ -28,12 +28,11 @@ class SideBar extends Component {
     loadRandomSong = () => {
         const random = Math.floor(Math.random() * Math.floor(this.props.totalSongs) + 1);
         this.props.history.push(`/songs/${random}`)
-        debugger
         this.props.getSongChart(random)
     }
 
     render() {
-        const renderButtons = this.state.buttons.map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
+        // const renderButtons = this.state.buttons.map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
         const linkStyle = {
             width: '100px',
             textDecoration: 'none',

@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 20% 60%;
   grid-gap: 3em;
+  font-family: monospace;
 }
 
 .App-logo {
@@ -43,12 +44,19 @@ li {
   padding: 0;
 }
 
+#main {
+  display: grid;
+  grid-template-rows: 10% 65% 25%;
+}
+
 #chart {
   display: grid;
   margin-left: 1em;
   padding-top: 1em;
   grid-template-columns: 60% 40%;
   grid-gap: 3em;
+  max-height: 65%;
+  /* border: 2px solid pink; */
 }
 
 .chord-img {
@@ -62,7 +70,6 @@ li {
 button {
   height: 2em;
   border-radius: 45%;
-  font-family: monospace;
 }
 
 input, button {
@@ -72,6 +79,12 @@ input, button {
   width: 10em;
   text-align: center;
   font-size: 0.5em;
+  font-family: monospace;
+}
+
+#main button {
+  /* height: 30em; */
+  font-size:1em;
 }
 
 #song-data {
@@ -95,7 +108,7 @@ input, button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 3em;
-  margin: 2em;
+  margin-left: 2em;
 }
 
 .chord-layout-name {
@@ -106,4 +119,15 @@ input, button {
   width: 100%;
   background-color: #FD9A32;
   padding-bottom: 2px;
+}
+
+#song-nav {
+  justify-content: space-around;
+  display: flex;
+}
+
+a {
+  /* list-style: none; */
+  text-decoration: none;
+  color: #282c34
 }

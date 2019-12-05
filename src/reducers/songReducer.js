@@ -21,7 +21,6 @@ export default function songReducer( state = {
                     break
                 default: newSectionId = 0
             }
-            debugger
             if ((newSectionId >= 0) && (newSectionId < state.currentSong.structure.length)){
                 const newSectionContent = state.currentSong.sections[state.currentSong.structure[newSectionId]]
                 return { ...state, currentSectionId: newSectionId, currentSectionContent: newSectionContent }
@@ -44,7 +43,6 @@ export default function songReducer( state = {
             return { ...state, allSongs: action.allSongs }
 
         case "UPDATE_SONG":
-            console.log(action.updatedSong)
             return { ...state, currentSong: action.updatedSong}
 
         default:
