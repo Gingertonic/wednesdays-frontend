@@ -1,43 +1,61 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { goToSong } from '../actions/songActions'
 
-const SideBar = ({buttons, inputs}) => {
-    const renderButtons = buttons.map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
-    const renderInputs = inputs.map((rules, i) => <form key={i}onSubmit={e => rules.eventHandler(e)}><input onChange={e => rules.changeHandler(e)} type="text" value={rules.formInput} placeholder={rules.placeholder}/></form> )
-    const linkStyle = {
-        width: '100px',
-        // padding: '12px',
-        // margin: '0 6px 6px',
-        // background: 'blue',
-        textDecoration: 'none',
-        color: 'white',
+class SideBar extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            formInput: "",
+            buttons: this.props.buttons
+        }
     }
-    return (
-        <div id="sidebar">
-            <header className="App-header">
-                {/* <a
-                    className="App-link"
-                    href="https://ukulelewednesdays.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img src="https://pbs.twimg.com/profile_images/1033135509206380544/xABx42As_400x400.jpg" className="App-logo" alt="logo" />
-                </a> */}
-                <NavLink to="/" exact style={linkStyle}>
-                    <img src="https://pbs.twimg.com/profile_images/1033135509206380544/xABx42As_400x400.jpg" className="App-logo" alt="logo" />
-                </NavLink>
 
-                { renderButtons }
-                { renderInputs }
+    handleFormInput = e => {
+        e.preventDefault();
+        this.setState({ formInput: e.target.value })
+    }
 
-                <div>
-                    <NavLink to="/songbook" exact style={linkStyle}>Songbook Index</NavLink>
+    handleFormSubmit = e => {
+        e.preventDefault();
+        this.props.goToSong(this.state.formInput)
+        this.setState({ formInput: ""})
+    }
 
-                </div>
+    render() {
+        const renderButtons = this.state.buttons.map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
+        const linkStyle = {
+            width: '100px',
+            textDecoration: 'none',
+            color: 'white',
+        }
 
-            </header>
-        </div>
-    )
+        return (
+            <div id="sidebar">
+                <header className="App-header">
+                    <NavLink to="/" exact style={linkStyle}>
+                        <img src="https://pbs.twimg.com/profile_images/1033135509206380544/xABx42As_400x400.jpg" className="App-logo" alt="logo" />
+                    </NavLink>
+
+                    { renderButtons }
+
+                    <form onSubmit={this.handleFormSubmit}>
+                        <input onChange={this.handleFormInput} type="text" value={this.state.formInput} placeholder={"Song ID"}/>
+                    </form>
+
+                    <div>
+                        <NavLink to="/songbook" exact style={linkStyle}>Songbook Index</NavLink>
+
+                    </div>
+
+                </header>
+            </div>
+        )
+    }
+
 }
 
-export default SideBar
+
+export default connect(null, { goToSong })(SideBar)

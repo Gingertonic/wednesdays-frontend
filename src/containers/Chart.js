@@ -77,10 +77,6 @@ class Chart extends Component {
         })
     }
 
-    showEnd = () => {
-        this.setState( {currentSectionContent: [[{type: "lyric", body: "NEXT SONG!"}]]} )
-    }
-
     buttons = () => [
             { text: "Next Section", eventHandler: () => this.props.goToSection("next") },
             { text: "Back to Top", eventHandler: () => this.props.goToSection("top") },

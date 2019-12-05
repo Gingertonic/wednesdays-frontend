@@ -24,6 +24,15 @@ export default function songReducer( state = {
             const newSectionContent = state.currentSong.sections[state.currentSong.structure[newSectionId]]
             return { ...state, currentSectionId: newSectionId, currentSectionContent: newSectionContent }
 
+        case "GO_TO_SONG":
+            const nextSong = state.allSongs.find(s => s.id === parseInt(action.songId))
+            return {
+                ...state,
+                currentSong: nextSong,
+                currentSectionId: 0,
+                currentSectionContent: nextSong.sections[nextSong.structure[0]],
+            }
+
         default:
             return state
     }
