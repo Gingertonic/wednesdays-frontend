@@ -3,10 +3,9 @@ import SideBar from './SideBar'
 
 const Welcome = () => {
     const buttons = []
-    const inputs = []
     return (
         <React.Fragment>
-            <SideBar buttons={buttons} inputs={inputs} />
+            <SideBar buttons={buttons} />
             <div id="main">
                 <h1>Welcome to Ukulele Wednesdays!</h1>
                 

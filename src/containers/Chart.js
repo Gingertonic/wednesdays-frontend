@@ -48,17 +48,6 @@ class Chart extends Component {
         this.fetchSong(random)
     }
 
-    handleFormSubmit = e => {
-         e.preventDefault();
-         console.log(this.state.formInput)
-         this.fetchSong(this.state.formInput)
-    }
-
-    handleFormInput = e => {
-        e.preventDefault();
-        this.setState({ formInput: e.target.value })
-    }
-
     toggleFavourite = () => {
         const newStatus = !this.state.currentSong.favourite
         const updatedSong = { ...this.state.currentSong, favourite: newStatus }
@@ -84,25 +73,20 @@ class Chart extends Component {
             { text: "Random Song!", eventHandler: this.loadSong },
         ]
 
-    inputs = () => [
-            { placeholder: "Song ID", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
-        ]
-
 
     render(){
 
         return (
             <React.Fragment>
 
-                <SideBar buttons={this.buttons()} inputs={this.inputs()} />
+                <SideBar buttons={this.buttons()} />
+                
                 <div id="main">
                     <div id="song-data">
                         <h1 id="song-title">{this.props.currentSong.data.title}   <span id="song-fave" onClick={this.toggleFavourite}>{this.state.currentSong.favourite ? "❤️" : "♡" }</span></h1> 
                         <h3 id="song-writers">{this.props.currentSong.data.writers}</h3>
                     </div>
-                     
-                   
-                    
+                      
                     <Section content={this.props.currentSectionContent} />
                    
                 </div>

@@ -39,7 +39,6 @@ class SideBar extends Component {
                         <img src="https://pbs.twimg.com/profile_images/1033135509206380544/xABx42As_400x400.jpg" className="App-logo" alt="logo" />
                     </NavLink>
 
-                    { renderButtons }
 
                     <form onSubmit={this.handleFormSubmit}>
                         <input onChange={this.handleFormInput} type="text" value={this.state.formInput} placeholder={"Song ID"}/>
@@ -47,8 +46,9 @@ class SideBar extends Component {
 
                     <div>
                         <NavLink to="/songbook" exact style={linkStyle}>Songbook Index</NavLink>
-
                     </div>
+
+                    { renderButtons }
 
                 </header>
             </div>
