@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllSongs } from '../actions/songActions'
-// import { NavLink } from 'react-router-dom'
+import { getAllSongs, getSongChart } from '../actions/songActions'
+import { NavLink } from 'react-router-dom'
 import SideBar from './SideBar'
 
 class SongbookIndex extends Component {
@@ -11,7 +11,7 @@ class SongbookIndex extends Component {
     }
 
     render(){
-        const renderSongs = this.props.allSongs.map(s => <li key={s.id}><a>{s.id}. {s.title} - {s.writers}</a></li>)
+        const renderSongs = this.props.allSongs.map(s => <li key={s.id}><NavLink to={`/song/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
         const buttons = []
 
         return (
@@ -31,4 +31,4 @@ const mSTP = state => {
     return { allSongs: state.allSongs }
 }
 
-export default connect(mSTP, { getAllSongs })(SongbookIndex)
+export default connect(mSTP, { getAllSongs, getSongChart })(SongbookIndex)

@@ -3,7 +3,7 @@ import SideBar from '../components/SideBar'
 import Section from './Section'
 
 import { connect } from 'react-redux'
-import { getAllSongs, goToSection } from '../actions/songActions'
+import { goToSection, getSongChart } from '../actions/songActions'
 
 import { allSongs } from '../testItems/newWorld'
 
@@ -21,8 +21,9 @@ class Chart extends Component {
     }
 
     componentDidMount(){
-        // this.fetchSong(1)
-        this.props.getAllSongs()
+        const path = window.location.pathname.split("/")
+        const songId = parseInt(path[path.length-1])
+        this.props.getSongChart(songId)
     }
 
     fetchSong = songId => {
@@ -120,6 +121,6 @@ export default connect(
     // mapDispatchToProps
     {
         goToSection,
-        getAllSongs
+        getSongChart
     }
 )(Chart)
