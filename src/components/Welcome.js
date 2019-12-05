@@ -7,9 +7,15 @@ const Welcome = () => {
         <React.Fragment>
             <SideBar buttons={buttons} />
             <div id="main">
-                <h1>Welcome to Ukulele Wednesdays!</h1>
+                <div>
+
+                </div>
+                <div>
+                    <h1>Welcome to Ukulele Wednesdays!</h1>
                 
-                <h2>Tweet your requests to <strong>@ukulelewednesdays</strong></h2>  
+                    <h2>Tweet your requests to <strong>@ukulelewednesdays</strong></h2>
+                </div>
+                <div><p>Twitter Feed coming here soon!</p></div>
             </div>
         
         </React.Fragment>
