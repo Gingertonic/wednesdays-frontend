@@ -32,7 +32,6 @@ class SideBar extends Component {
     }
 
     render() {
-        // const renderButtons = this.state.buttons.map((rules, i) => <div key={i}><button onClick={rules.eventHandler}>{rules.text}</button></div> )
         const linkStyle = {
             width: '100px',
             textDecoration: 'none',
