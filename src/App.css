@@ -65,7 +65,7 @@ button {
   font-family: monospace;
 }
 
-input {
+input, button {
   margin: 2em;
   border-radius: 50%;
   height: 10em;
@@ -100,4 +100,10 @@ input {
 
 .chord-layout-name {
   margin-left: 0.5em;
+}
+
+#index-link {
+  width: 100%;
+  background-color: #FD9A32;
+  padding-bottom: 2px;
 }

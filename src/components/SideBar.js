@@ -22,8 +22,14 @@ class SideBar extends Component {
         e.preventDefault();
         this.props.getSongChart(this.state.formInput);
         this.setState({ formInput: ""});
-        console.log("setting song")
         this.props.history.push(`/songs/${this.state.formInput}`)
+    }
+
+    loadRandomSong = () => {
+        const random = Math.floor(Math.random() * Math.floor(this.props.totalSongs) + 1);
+        this.props.history.push(`/songs/${random}`)
+        debugger
+        this.props.getSongChart(random)
     }
 
     render() {
@@ -41,16 +47,19 @@ class SideBar extends Component {
                         <img src="https://pbs.twimg.com/profile_images/1033135509206380544/xABx42As_400x400.jpg" className="App-logo" alt="logo" />
                     </NavLink>
 
+                    <div id="index-link">
+                        <NavLink to="/songbook" exact style={linkStyle}>Songbook Index</NavLink>
+                    </div>
 
                     <form onSubmit={this.handleFormSubmit}>
                         <input onChange={this.handleFormInput} type="text" value={this.state.formInput} placeholder={"Song ID"}/>
                     </form>
 
                     <div>
-                        <NavLink to="/songbook" exact style={linkStyle}>Songbook Index</NavLink>
+                        <button onClick={this.loadRandomSong}>Random Song!</button>
                     </div>
 
-                    { renderButtons }
+                    {/* { renderButtons } */}
 
                 </header>
             </div>
@@ -59,5 +68,6 @@ class SideBar extends Component {
 
 }
 
+const mSTP = state => {return { totalSongs: state.allSongs.length }}
 
-export default withRouter(connect(null, { getSongChart })(SideBar))
+export default withRouter(connect(mSTP, { getSongChart })(SideBar))

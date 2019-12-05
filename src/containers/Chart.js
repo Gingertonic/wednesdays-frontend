@@ -14,11 +14,11 @@ class Chart extends Component {
         this.props.getSongChart(songId)
     }
 
-    loadRandomSong = () => {
-        const totalSongs = 2
-        const random = Math.floor(Math.random() * Math.floor(totalSongs) + 1);
-        this.props.getSongChart(random)
-    }
+    // loadRandomSong = () => {
+    //     const totalSongs = 2
+    //     const random = Math.floor(Math.random() * Math.floor(totalSongs) + 1);
+    //     this.props.getSongChart(random)
+    // }
 
     toggleFavourite = () => {
         const newStatus = !this.props.currentSong.favourite
@@ -30,7 +30,7 @@ class Chart extends Component {
             { text: "Next Section", eventHandler: () => this.props.goToSection("next") },
             { text: "Back to Top", eventHandler: () => this.props.goToSection("top") },
             { text: "Previous Section", eventHandler: () => this.props.goToSection("prev") },
-            { text: "Random Song!", eventHandler: this.loadRandomSong },
+            // { text: "Random Song!", eventHandler: this.loadRandomSong },
         ]
 
 
