@@ -43,7 +43,11 @@ export default function songReducer( state = {
             return { ...state, allSongs: action.allSongs }
 
         case "UPDATE_SONG":
-            return { ...state, currentSong: action.updatedSong}
+            const songOverview = state.allSongs.find(s => s.id === action.updatedSong.data.id)
+            const updatedSongOverview = { ...songOverview, favourite: !songOverview.favourite }
+            const songIndex = state.allSongs.indexOf(songOverview)
+            const updatedAllSongs = [ ...state.allSongs.slice(0, songIndex), updatedSongOverview, ...state.allSongs.slice(songIndex + 1)]
+            return { ...state, currentSong: action.updatedSong, allSongs: updatedAllSongs}
 
         default:
             return state
