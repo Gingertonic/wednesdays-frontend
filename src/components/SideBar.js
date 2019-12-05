@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { goToSong } from '../actions/songActions'
+import { getSongChart } from '../actions/songActions'
 
 class SideBar extends Component {
 
@@ -20,7 +20,7 @@ class SideBar extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
-        this.props.goToSong(this.state.formInput)
+        this.props.getSongChart(this.state.formInput)
         this.setState({ formInput: ""})
     }
 
@@ -58,4 +58,4 @@ class SideBar extends Component {
 }
 
 
-export default connect(null, { goToSong })(SideBar)
+export default connect(null, { getSongChart })(SideBar)

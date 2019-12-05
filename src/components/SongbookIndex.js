@@ -1,24 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getAllSongs } from '../actions/songActions'
+// import { NavLink } from 'react-router-dom'
 import SideBar from './SideBar'
 
-const SongbookIndex = () => {
-    const buttons  = [
-        // { text: "Random Song!", eventHandler: this.loadSong },
-    ]
+class SongbookIndex extends Component {
 
-    const inputs = [
-        // { placeholder: "Next Section", eventHandler: this.handleFormSubmit, changeHandler: this.handleFormInput, value: this.state.formInput }
-    ]
+    componentDidMount = () => {
+        this.props.getAllSongs()
+    }
 
-    return (
-        <React.Fragment>
-            <SideBar buttons={buttons} inputs={inputs} />
-            <div id="main">
-                <h1>All the Songs!</h1> 
-            </div>
-        
-        </React.Fragment>
-    )
+    render(){
+        const renderSongs = this.props.allSongs.map(s => <li key={s.id}><a>{s.id}. {s.title} - {s.writers}</a></li>)
+        const buttons = []
+
+        return (
+            <React.Fragment>
+                <SideBar buttons={buttons} />
+                <div id="main">
+                    <h1>All the Songs!</h1> 
+                    { renderSongs }
+                </div>
+            
+            </React.Fragment>
+        )
+    }
 }
 
-export default SongbookIndex
+const mSTP = state => {
+    return { allSongs: state.allSongs }
+}
+
+export default connect(mSTP, { getAllSongs })(SongbookIndex)

@@ -7,6 +7,7 @@ import Chart from './Chart'
 
 
 class Wednesdays extends Component {
+    
     render(){
         return(
             <Router>

@@ -24,8 +24,10 @@ export default function songReducer( state = {
             const newSectionContent = state.currentSong.sections[state.currentSong.structure[newSectionId]]
             return { ...state, currentSectionId: newSectionId, currentSectionContent: newSectionContent }
 
-        case "GO_TO_SONG":
-            const nextSong = state.allSongs.find(s => s.id === parseInt(action.songId))
+        case "ADD_SONG_CHART":
+            const nextSong = action.songChart
+            // const nextSong = state.allSongs.find(s => s.id === parseInt(action.songId))
+            // const chart = action.songChart
             return {
                 ...state,
                 currentSong: nextSong,
@@ -34,8 +36,8 @@ export default function songReducer( state = {
             }
 
         case "ADD_ALL_SONGS":
-            console.log(action.allSongs)
-            return state
+            console.log(action)
+            return { ...state, allSongs: action.allSongs }
 
         default:
             return state
