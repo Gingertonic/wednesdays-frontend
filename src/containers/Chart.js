@@ -3,7 +3,7 @@ import SideBar from '../components/SideBar'
 import Section from './Section'
 
 import { connect } from 'react-redux'
-import { goToSection } from '../actions/songActions'
+import { getAllSongs, goToSection } from '../actions/songActions'
 
 import { allSongs } from '../testItems/newWorld'
 
@@ -22,6 +22,7 @@ class Chart extends Component {
 
     componentDidMount(){
         // this.fetchSong(1)
+        this.props.getAllSongs()
     }
 
     fetchSong = songId => {
@@ -80,7 +81,7 @@ class Chart extends Component {
             <React.Fragment>
 
                 <SideBar buttons={this.buttons()} />
-                
+
                 <div id="main">
                     <div id="song-data">
                         <h1 id="song-title">{this.props.currentSong.data.title}   <span id="song-fave" onClick={this.toggleFavourite}>{this.state.currentSong.favourite ? "❤️" : "♡" }</span></h1> 
@@ -118,6 +119,7 @@ export default connect(
     mapStateToProps,
     // mapDispatchToProps
     {
-        goToSection
+        goToSection,
+        getAllSongs
     }
 )(Chart)

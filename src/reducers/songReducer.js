@@ -33,6 +33,10 @@ export default function songReducer( state = {
                 currentSectionContent: nextSong.sections[nextSong.structure[0]],
             }
 
+        case "ADD_ALL_SONGS":
+            console.log(action.allSongs)
+            return state
+
         default:
             return state
     }
