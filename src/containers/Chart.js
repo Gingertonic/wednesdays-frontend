@@ -8,16 +8,6 @@ import { goToSection, getSongChart, updateSong } from '../actions/songActions'
 
 class Chart extends Component {
 
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         currentSong: allSongs[0],
-    //         currentSectionId: 0,
-    //         currentSectionContent: [],
-    //         formInput: ""
-    //     }
-    // }
-
     componentDidMount(){
         const path = window.location.pathname.split("/")
         const songId = parseInt(path[path.length-1])
@@ -36,22 +26,11 @@ class Chart extends Component {
         this.props.updateSong(this.props.currentSong.data.id, updates)
     }
 
-    // updateSongInApi = newStatus => {
-    //     fetch(`http://localhost:3001/songs/${this.state.currentSong.data.id}`, {
-    //         method: 'PATCH',
-    //         body: JSON.stringify({favourite: newStatus}),
-    //         headers: {
-    //             "Content-Type": 'application/json',
-    //             "Accept": 'application/json'
-    //         }
-    //     })
-    // }
-
     buttons = () => [
             { text: "Next Section", eventHandler: () => this.props.goToSection("next") },
             { text: "Back to Top", eventHandler: () => this.props.goToSection("top") },
             { text: "Previous Section", eventHandler: () => this.props.goToSection("prev") },
-            { text: "Random Song!", eventHandler: this.loadSong },
+            { text: "Random Song!", eventHandler: this.loadRandomSong },
         ]
 
 
