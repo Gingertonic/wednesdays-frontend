@@ -23,6 +23,12 @@ A React client to interface with the [Wednesdays API](https://github.com/Gingert
 ## Contribution
 Always appreciated! This is a work in progress!
 
+## Todos
+- add 404 routing and error handling
+- add Twitter feed to Welcome component
+- improve responsiveness
+- improve overall styling
+
 ----
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
