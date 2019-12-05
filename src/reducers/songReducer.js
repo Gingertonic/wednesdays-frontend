@@ -1,10 +1,10 @@
-import { allSongs } from '../testItems/newWorld'
+// import { allSongs } from '../testItems/newWorld'
 
 export default function songReducer( state = { 
-        allSongs: allSongs,
-        currentSong: allSongs[2],
+        allSongs: [],
+        currentSong: {id: 0, data: {title: "Loading...", writers: ""}},
         currentSectionId: 0,
-        currentSectionContent: allSongs[2].sections[allSongs[0].structure[0]],
+        currentSectionContent: [],
         formInput: ""
     }, 
     action ) {
