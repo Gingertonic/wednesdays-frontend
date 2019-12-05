@@ -36,8 +36,11 @@ export default function songReducer( state = {
             }
 
         case "ADD_ALL_SONGS":
-            console.log(action)
             return { ...state, allSongs: action.allSongs }
+
+        case "UPDATE_SONG":
+            console.log(action.updatedSong)
+            return { ...state, currentSong: action.updatedSong}
 
         default:
             return state
