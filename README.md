@@ -1,3 +1,30 @@
+# Ukulele Wednesdays Songbook - React frontend
+![](http://forthebadge.com/images/badges/made-with-javascript.svg)
+![](https://forthebadge.com/images/badges/built-with-love.svg)
+
+A React client to interface with the [Wednesdays API](https://github.com/Gingertonic/wednesdays-api "Wednesdays API")
+
+## Installation
+- clone down repo
+    + SSH: `git clone git@github.com:Gingertonic/wednesdays-frontend.git`
+    + HTTPS: `git clone https://github.com/Gingertonic/wednesdays-frontend.git`
+- `cd wednesdays-frontend`
+- `npm install`
+
+## Start server on port 3000
+- `rails s -p 3000` 
+
+## View in browser
+- visit `http://localhost:3000/`
+
+## Remember to start API server too!
+- see [Wednesdays API](https://github.com/Gingertonic/wednesdays-api "Wednesdays API")
+
+## Contribution
+Always appreciated! This is a work in progress!
+
+----
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
