@@ -14,7 +14,7 @@ export const getAllSongs = () => {
         dispatch({ type: "FETCHING_SONGS"})
         fetch(`http://localhost:3001/songs`)
             .then(r => r.json())
-            .then(allSongs => dispatch({ type: "ADD_ALL_SONGS", allSongs}))
+            .then(allSongs => dispatch({ type: "ADD_ALL_SONGS", allSongs }))
     }
 }
 

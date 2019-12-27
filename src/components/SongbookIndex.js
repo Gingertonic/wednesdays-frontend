@@ -8,7 +8,8 @@ class SongbookIndex extends Component {
     constructor(props){
         super(props)
         this.state = { 
-            songs: this.props.allSongs
+            songs: this.props.allSongs,
+            // songLikeCounts: {}
         }
     }
 
@@ -22,8 +23,17 @@ class SongbookIndex extends Component {
         }
     }
 
+    // increaseLike = songId => {
+    //     let likes = 1         
+    //     if (this.state.songLikeCounts[songId]){
+    //         likes = this.state.songLikeCounts[songId] + 1
+    //     } 
+    //     this.setState({ songLikeCounts: {...this.state.songLikeCounts, [songId]: likes} })
+    // }
+
     render(){
-        const renderSongs = this.state.songs.map(s => <li className="index-li" key={s.id}><NavLink to={`/songs/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
+    const renderSongs = this.state.songs.map(s => <li className="index-li" key={s.id}><NavLink to={`/songs/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
+    // const renderSongs = this.state.songs.map(s => <li className="index-li" key={s.id}><button onClick={() => this.increaseLike(s.id)}>Like Me! {this.state.songLikeCounts[s.id] ? this.state.songLikeCounts[s.id] : 0}</button><NavLink to={`/songs/${s.id}`} >{s.id}. {s.title} - {s.writers}</NavLink></li>)
         const buttons = []
 
         return (
