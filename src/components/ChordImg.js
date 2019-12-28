@@ -1,5 +1,5 @@
 import React from 'react'
-import { chords } from '../testItems/newWorld'
+import { chords } from '../chords/image_paths'
 
 const ChordImg = ({ chordSymbol }) => {
     return (
