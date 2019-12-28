@@ -5,7 +5,7 @@ export const goToSection = direction => { return { type: 'GO_TO_SECTION', direct
 export const getSongChart = songId => { 
     return (dispatch) => {
         dispatch({type: "FETCHING_SONG_CHART"})
-        fetch(`${apiBaseUrl}/${songId}`)
+        fetch(`${apiBaseUrl}/songs/${songId}`)
             .then(r => r.json())
             .then(songChart => dispatch({ type: "ADD_SONG_CHART", songChart}))
     }
