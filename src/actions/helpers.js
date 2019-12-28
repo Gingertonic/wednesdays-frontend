@@ -1,0 +1,1 @@
+export const apiBaseUrl = 'https://wednesdays-api.herokuapp.com'
