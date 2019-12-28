@@ -14,7 +14,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 
-const store = createStore(songReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(songReducer, compose(applyMiddleware(thunk)))
 
 ReactDOM.render(
     <Provider store={store}>
